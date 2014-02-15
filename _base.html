@@ -16,10 +16,25 @@ CampusHash HTML Deck
   <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
-  <script src="js/angular.min.js"></script>
   <link rel="stylesheet" href="theme/css/custom.css">
+  <script>
+      function encodePreElements() {
+          var pre = document.getElementsByTagName('pre');
+          for(var i = 0; i < pre.length; i++) {
+              var encoded = htmlEncode(pre[i].innerHTML);
+              pre[i].innerHTML = encoded;
+          }
+      };
+
+      function htmlEncode(value) {
+         var div = document.createElement('div');
+         var text = document.createTextNode(value);
+         div.appendChild(text);
+         return div.innerHTML;
+      }
+  </script>
 </head>
-<body style="opacity: 0" ng-app>
+<body style="opacity: 0" onLoad='encodePreElements()'>
 
 <slides class="layout-widescreen">
 
@@ -66,7 +81,7 @@ CampusHash HTML Deck
     <p>You have been a great audience!</p>
   </article>
   <p class="auto-fadein">
-    Shoot your questions at <strong style="color: #192959;">forum.campushash.com</strong>.
+    Follow me: @sanketsaurav
   </p>
 </slide>
 
